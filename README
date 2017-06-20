@@ -6,7 +6,7 @@
     1.请求服务器带identity在headers里面来指定访问哪一个App，访问时就会自动调用对应App的相关参数
         identity为GET请求带APP name请求~/wx/get_code/,获取code货计算获得
         identity，identity = wx_tool.get_md5('自定义字符串' + wx_tool.get_md5(code))
-    2.用自定义算法对传输数据进行加密，通过装饰器验证
+    2.用自定义算法对传输数据进行加密，通过装饰器验证,传输的数据可以随意增加作为干扰数据
         def calculate(data):
             """
             微服务加密
