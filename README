@@ -1,0 +1,33 @@
+聚合支付微服务（未写完，只写了微信的APP支付和小程序支付）
+服务框架 Django
+（牵涉隐私，移除了数据库和相关一些信息，请自行配置）
+
+一.使用方法
+    1.请求服务器带identity在headers里面来指定访问哪一个App，访问时就会自动调用对应App的相关参数
+        identity为GET请求带APP name请求~/wx/get_code/,获取code货计算获得
+        identity，identity = wx_tool.get_md5('自定义字符串' + wx_tool.get_md5(code))
+    2.用自定义算法对传输数据进行加密，通过装饰器验证
+        def calculate(data):
+            """
+            微服务加密
+            token算法:
+            1，传入参数字典排序
+            3，md5加密，得到token
+            2，整理成字符串 加上 '自定义字符串'
+            """
+            sorted_key = sorted(data.keys())
+            key_value = (key + data[key] for key in sorted_key)
+            string = ''.join(key_value) + '自定义字符串'
+            data['token'] = md5(string.encode()).hexdigest()
+            return data
+    3.带参数访问指定接口
+    4.日志信息在log里面
+    微信支付的证书放/wx/cret/里面，数据库里面写路径直接写/wx/cret/***.pem即可
+    放在指定权限的文件夹里面就稍微修改pay里面的配置即可
+
+二.查看顺序
+    1.看models里面的每个app需要的参数，封装对应参数在本地
+    2.支付类封装在/wx/pay/里面，可以提出来单独使用
+    3.其它都写在views里面了
+
+三.非常欢迎PR，和帮忙更正，希望可以构建一整套开源的聚合支付服务（都怪ping++态度不好还贵）
