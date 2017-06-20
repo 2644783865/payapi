@@ -44,14 +44,14 @@ print(r.json())
 # APP支付rsp示例
 # 下单，成功后微信会往回调连接发消息验证，包含订单
 unified_order = {'return_code': 'SUCCESS', 'return_msg': 'OK',
-                 'appid': 'wx4d89fdb3c4a613b8', 'mch_id': '1442791802',
+                 'appid': '*', 'mch_id': '*',
                  'device_info': 'WEB', 'nonce_str': 'NXxKmyOp46sThqdl',
                  'sign': 'BC150421AF70033ECDE48D65A3AF1FCB', 'result_code': 'SUCCESS',
                  'prepay_id': 'wx201706151354008bb58d41d10347109982', 'trade_type': 'APP'}
 # 微服务整理后，直接给前端调起支付的数据
-info = {'appid': 'wx4d89fdb3c4a613b8',
-        'partnerid': '1442791802',
-        'prepayid': 'wx201706151533142b8d7c639b0133738675',
+info = {'appid': '*',
+        'partnerid': '*',
+        'prepayid': '*',
         'package': 'Sign=WXPay',
         'noncestr': 'amlg8z8mdy05xchafo529z4gngkyr4hn',
         'timestamp': '1497511994',
@@ -59,14 +59,14 @@ info = {'appid': 'wx4d89fdb3c4a613b8',
 
 # 查询订单
 order_query = {'return_code': 'SUCCESS', 'return_msg': 'OK',
-               'appid': 'wx4d89fdb3c4a613b8', 'mch_id': '1442791802',
+               'appid': '*', 'mch_id': '*',
                'nonce_str': 'XOcS0Gs56lHSBCNy', 'sign': 'DDCDAF6F66F41D63141CEA3471DB7B03',
                'result_code': 'SUCCESS', 'out_trade_no': '1111111111111111',
                'trade_state': 'NOTPAY', 'trade_state_desc': '订单未支付'
                }
 # 关闭订单
 close_order = {'return_code': 'SUCCESS', 'return_msg': 'OK',
-               'appid': 'wx4d89fdb3c4a613b8', 'mch_id': '1442791802',
+               'appid': '*', 'mch_id': '*',
                'sub_mch_id': None, 'nonce_str': 'J59TSM3tom3xrxjj',
                'sign': '7D21B66178F5CBE7BBD5EAE1A6F1D6EB', 'result_code': 'SUCCESS'}
 
