@@ -19,13 +19,14 @@ def calculate(data):
     data['token'] = md5(string.encode()).hexdigest()
     return data
 
+
 url = 'http://0.0.0.0:8888/wx/refund/'
 # 过微服务验证
 headers = {'identity': '7dbcc9e0926eae2b57d6043e4c4698a1'}
 
 data = {
     "out_trade_no": '11111111111111113',  # 单号
-    'out_refund_no':"11111111111111113",  # 退款单号
+    'out_refund_no': "11111111111111113",  # 退款单号
     "body": 'ceshibody',  # 内容
     "total_fee": '0.01',  # 价格元
     'refund_fee': '0.01',
@@ -70,8 +71,8 @@ close_order = {'return_code': 'SUCCESS', 'return_msg': 'OK',
                'sub_mch_id': None, 'nonce_str': 'J59TSM3tom3xrxjj',
                'sign': '7D21B66178F5CBE7BBD5EAE1A6F1D6EB', 'result_code': 'SUCCESS'}
 
-
 from xml.etree import ElementTree as etree
+
 
 def to_dict(content):
     raw = {}
@@ -79,6 +80,7 @@ def to_dict(content):
     for child in root:
         raw[child.tag] = child.text
     return raw
+
 
 # 返回示例
 def payr_eturn(request):
